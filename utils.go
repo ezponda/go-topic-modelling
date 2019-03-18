@@ -2,6 +2,25 @@ package lda
 
 import "math"
 
+func MinInt64Slice(sli []int64) int64 {
+	var min int64
+	for i, e := range sli {
+		if i == 0 || e < min {
+			min = e
+		}
+	}
+	return min
+}
+func MaxInt64Slice(sli []int64) int64 {
+	var max int64
+	for i, e := range sli {
+		if i == 0 || e > max {
+			max = e
+		}
+	}
+	return max
+}
+
 func OptimizeParameter(gamma float64, Ndx [][]int64, maxIter int, tol float64) float64 {
 	// Newton's method for argmax_gamma product_d ( B( Ndx_{d,:} + gamma) / B(gamma)  )
 	D := len(Ndx)
